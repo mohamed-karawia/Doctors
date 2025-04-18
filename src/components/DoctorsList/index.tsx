@@ -1,11 +1,16 @@
-import { DOCTORS } from "@/constants/DOCTORS";
+import { FC } from "react";
 import DoctorCard from "../DoctorCard";
 import styles from "./DoctorsList.module.scss";
+import { Doctor } from "@/types/doctor";
 
-const DoctorsList = () => {
+type DoctorsListProps = {
+  doctorsList: Doctor[];
+};
+
+const DoctorsList: FC<DoctorsListProps> = ({ doctorsList }) => {
   return (
     <div className={styles["list"]}>
-      {DOCTORS.map((doctor) => (
+      {doctorsList.map((doctor) => (
         <DoctorCard key={doctor.id} doctor={doctor} />
       ))}
     </div>

@@ -1,0 +1,11 @@
+.selected-option {
+  display: flex;
+  gap: 7px;
+}
+
+.custom-option {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px;
+  padding: 30px;
+}
