@@ -1,0 +1,110 @@
+import { Doctor } from "../types/doctor";
+
+export const DOCTORS: Doctor[] = [
+  {
+    id: 1,
+    name: "Dr. Ahmed Ali",
+    imageSrc: "/images/doctor1.jpg",
+    location: "Cairo, Maadi",
+    availability: {
+      Monday: ["9:00 AM - 12:00 PM", "1:00 PM - 5:00 PM"],
+      Wednesday: ["9:00 AM - 1:00 PM"],
+      Friday: ["9:00 AM - 3:00 PM"],
+    },
+    specialty: "Cardiology",
+    rating: 4.5,
+  },
+  {
+    id: 2,
+    name: "Dr. Fatima Ibrahim",
+    imageSrc: "/images/doctor2.jpg",
+    location: "Cairo, Heliopolis",
+    availability: {
+      Tuesday: ["10:00 AM - 1:00 PM", "2:00 PM - 6:00 PM"],
+      Wednesday: ["10:00 AM - 2:00 PM"],
+      Friday: ["9:00 AM - 1:00 PM"],
+    },
+    specialty: "Pediatrics",
+    rating: 4.7,
+  },
+  {
+    id: 3,
+    name: "Dr. Rania Fouad",
+    imageSrc: "/images/doctor3.jpg",
+    location: "Cairo, Zamalek",
+    availability: {
+      Monday: ["8:00 AM - 12:00 PM", "2:00 PM - 4:00 PM"],
+      Tuesday: ["10:00 AM - 1:00 PM", "3:00 PM - 6:00 PM"],
+      Thursday: ["1:00 PM - 5:00 PM"],
+    },
+    specialty: "Orthopedics",
+    rating: 4.8,
+  },
+  {
+    id: 4,
+    name: "Dr. Sara Al-Masry",
+    imageSrc: "/images/doctor4.jpg",
+    location: "Cairo, Mohandessin",
+    availability: {
+      Monday: ["10:00 AM - 1:00 PM", "2:00 PM - 5:00 PM"],
+      Tuesday: ["9:00 AM - 12:00 PM", "1:00 PM - 4:00 PM"],
+      Thursday: ["1:00 PM - 4:00 PM"],
+    },
+    specialty: "Dermatology",
+    rating: 4.6,
+  },
+  {
+    id: 5,
+    name: "Dr. Mona Khaled",
+    imageSrc: "/images/doctor5.jpg",
+    location: "Cairo, Nasr City",
+    availability: {
+      Monday: ["9:00 AM - 12:00 PM", "1:00 PM - 4:00 PM"],
+      Wednesday: ["8:00 AM - 12:00 PM"],
+      Friday: ["9:00 AM - 1:00 PM"],
+    },
+    specialty: "Internal Medicine",
+    rating: 4.4,
+  },
+  {
+    id: 6,
+    name: "Dr. Youssef El-Sayed",
+    imageSrc: "/images/doctor6.jpg",
+    location: "Cairo, New Cairo",
+    availability: {
+      Monday: ["10:00 AM - 1:00 PM", "2:00 PM - 5:00 PM"],
+      Wednesday: ["9:00 AM - 1:00 PM"],
+      Friday: ["10:00 AM - 2:00 PM"],
+    },
+    specialty: "Gynecology",
+    rating: 4.9,
+  },
+  {
+    id: 7,
+    name: "Dr. Hany Shawky",
+    imageSrc: "/images/doctor7.jpg",
+    location: "Cairo, Dokki",
+    availability: {
+      Tuesday: ["10:00 AM - 12:00 PM", "1:00 PM - 4:00 PM"],
+      Wednesday: ["9:00 AM - 12:00 PM"],
+      Thursday: ["1:00 PM - 5:00 PM"],
+    },
+    specialty: "Dentistry",
+    rating: 4.3,
+  },
+  {
+    id: 8,
+    name: "Dr. Mohamed Hassan ",
+    imageSrc: "/images/doctor8.jpg",
+    location: "Cairo, 6th of October",
+    availability: {
+      Tuesday: ["9:00 AM - 1:00 PM", "2:00 PM - 5:00 PM"],
+      Thursday: ["10:00 AM - 1:00 PM", "3:00 PM - 6:00 PM"],
+      Friday: ["9:00 AM - 12:00 PM"],
+    },
+    specialty: "Neurology",
+    rating: 4.7,
+  },
+];
+
+// export default DOCTORS;

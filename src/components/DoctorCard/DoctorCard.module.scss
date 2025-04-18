@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 300px;
+
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -15,19 +17,30 @@
   }
 
   &--name {
-    font-size: 24px;
+    font-size: $font-lg;
     font-weight: bold;
     margin-bottom: 8px;
   }
   &--specialty {
-    font-size: 18px;
+    font-size: $font-md;
     color: #666;
     margin-bottom: 8px;
   }
 
   &--location {
-    font-size: 16px;
+    font-size: $font-md;
     color: #999;
+    margin-bottom: 8px;
+  }
+  &--rating {
+    font-size: $font-md;
+    color: #f39c12;
+    margin-bottom: 8px;
+  }
+
+  &--availability {
+    font-size: $font-md;
+    color: #2ecc71;
     margin-bottom: 8px;
   }
 }
