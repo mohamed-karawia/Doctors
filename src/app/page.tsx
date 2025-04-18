@@ -1,19 +1,21 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import DoctorsList from "@/components/DoctorsList";
+import DoctorsList from "@/components/Doctors/DoctorsList";
 import Dropdown, { OptionType } from "@/components/Shared/Dropdown";
 import styles from "./page.module.scss";
 import { SPECIALTIES, WEEK_DAYS } from "@/constants/FILTERS";
 import { DOCTORS } from "@/constants/DOCTORS";
 import stringsToOptions from "@/utils/stringsToOptions";
+import BookingModal from "@/components/Doctors/BookingModal";
+import { Doctor } from "@/types/doctor";
 
 export default function Home() {
   const [filteredDoctors, setFilteredDoctors] = useState(DOCTORS);
   const [specialty, setSpecialty] = useState<null | OptionType>(null);
-
-  // Explicitly define weekDays as an array of OptionType
   const [weekDay, setWeekDay] = useState<null | OptionType>(null);
+  const [isDoctorModalOpen, setIsDoctorModalOpen] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState<null | Doctor>(null);
 
   useEffect(() => {
     let filtered = DOCTORS;
@@ -44,6 +46,14 @@ export default function Home() {
     return stringsToOptions(WEEK_DAYS);
   }, [WEEK_DAYS]);
 
+  const handleBooking = (id: number) => {
+    const doctor = DOCTORS.find((doc) => doc.id === id); // Find the doctor by ID
+    if (doctor) {
+      setSelectedDoctor(doctor);
+      setIsDoctorModalOpen(true);
+    }
+  };
+
   return (
     <div className={styles["container"]}>
       <div className={styles["filters"]}>
@@ -59,7 +69,14 @@ export default function Home() {
           handleChange={(val) => setWeekDay(val)}
         />
       </div>
-      <DoctorsList doctorsList={filteredDoctors} />
+      <DoctorsList doctorsList={filteredDoctors} onBook={handleBooking} />
+      {selectedDoctor && (
+        <BookingModal
+          isOpen={isDoctorModalOpen}
+          setIsOpen={setIsDoctorModalOpen}
+          doctorData={selectedDoctor}
+        />
+      )}
     </div>
   );
 }

@@ -1,15 +1,17 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Doctor } from "@/types/doctor";
+import Button from "@/components/Shared/Button";
 import styles from "./DoctorCard.module.scss";
-import Button from "../Shared/Button";
 
 type DoctorCardProps = {
   doctor: Doctor;
+  onBook: (id: number) => void;
 };
 
-const DoctorCard: FC<DoctorCardProps> = ({ doctor }) => {
-  const { name, imageSrc, location, availability, specialty, rating } = doctor;
+const DoctorCard: FC<DoctorCardProps> = ({ doctor, onBook }) => {
+  const { id, name, imageSrc, location, availability, specialty, rating } =
+    doctor;
 
   const availabilityDays = Object.keys(availability).join(", ");
 
@@ -32,7 +34,9 @@ const DoctorCard: FC<DoctorCardProps> = ({ doctor }) => {
         </p>
       </div>
       <div className={styles["card--actions"]}>
-        <Button type="button">Book Now</Button>
+        <Button type="button" onClick={() => onBook(id)}>
+          Book Now
+        </Button>
       </div>
     </div>
   );
