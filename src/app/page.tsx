@@ -11,7 +11,9 @@ import stringsToOptions from "@/utils/stringsToOptions";
 export default function Home() {
   const [filteredDoctors, setFilteredDoctors] = useState(DOCTORS);
   const [specialty, setSpecialty] = useState<null | OptionType>(null);
-  const [weekDays, setWeekDay] = useState<OptionType[]>([]);
+
+  // Explicitly define weekDays as an array of OptionType
+  const [weekDay, setWeekDay] = useState<null | OptionType>(null);
 
   useEffect(() => {
     let filtered = DOCTORS;
@@ -23,14 +25,16 @@ export default function Home() {
       );
     }
 
-    if (weekDays.length > 0) {
-      filtered = filtered.filter((doctor) =>
-        weekDays.some((weekDay) => doctor.availability[weekDay?.value])
+    if (weekDay) {
+      filtered = filtered.filter(
+        (doctor) =>
+          doctor.availability[weekDay.value] &&
+          doctor.availability[weekDay.value].length > 0
       );
     }
 
     setFilteredDoctors(filtered);
-  }, [specialty, weekDays]);
+  }, [specialty, weekDay]);
 
   const specialtiesOptions = useMemo(() => {
     return stringsToOptions(SPECIALTIES);
@@ -45,15 +49,14 @@ export default function Home() {
       <div className={styles["filters"]}>
         <h3>Filter by</h3>
         <Dropdown
-          value={specialty}
           options={specialtiesOptions}
+          value={specialty}
           handleChange={(val) => setSpecialty(val)}
         />
         <Dropdown
-          value={weekDays}
           options={weekDaysOptions}
+          value={weekDay}
           handleChange={(val) => setWeekDay(val)}
-          isMulti
         />
       </div>
       <DoctorsList doctorsList={filteredDoctors} />

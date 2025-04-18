@@ -4,6 +4,9 @@ import Select, {
   StylesConfig,
   OptionProps,
   SingleValueProps,
+  SingleValue as SingleValueType,
+  ActionMeta,
+  PropsValue,
 } from "react-select";
 import styles from "./Dropdown.module.scss";
 
@@ -14,10 +17,12 @@ export interface OptionType {
 
 interface DropdownProps {
   options: OptionType[];
-  handleChange: (selectedOption: OptionType | null | OptionType[]) => void;
-  value: OptionType | null;
+  handleChange: (
+    newValue: SingleValueType<OptionType>,
+    actionMeta: ActionMeta<OptionType>
+  ) => void;
+  value: PropsValue<OptionType>;
   isLoading?: boolean;
-  isMulti?: boolean;
 }
 
 const selectStyles: StylesConfig<OptionType, false> = {
@@ -65,7 +70,6 @@ const Dropdown: FC<DropdownProps> = ({
   options,
   handleChange,
   value,
-  isMulti,
   ...props
 }) => {
   return (
@@ -81,7 +85,6 @@ const Dropdown: FC<DropdownProps> = ({
           IndicatorSeparator: () => null,
         }}
         styles={selectStyles}
-        isMulti={isMulti}
         isClearable
         {...props}
       />
