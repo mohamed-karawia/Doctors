@@ -23,6 +23,7 @@ interface DropdownProps {
   ) => void;
   value: PropsValue<OptionType>;
   isLoading?: boolean;
+  placeholder: string;
 }
 
 const selectStyles: StylesConfig<OptionType, false> = {
@@ -70,6 +71,7 @@ const Dropdown: FC<DropdownProps> = ({
   options,
   handleChange,
   value,
+  placeholder,
   ...props
 }) => {
   return (
@@ -86,6 +88,7 @@ const Dropdown: FC<DropdownProps> = ({
         }}
         styles={selectStyles}
         isClearable
+        placeholder={placeholder}
         {...props}
       />
     </div>

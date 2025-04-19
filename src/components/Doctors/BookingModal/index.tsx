@@ -4,17 +4,20 @@ import ModalComponent from "@/components/Shared/Modal";
 import { Doctor } from "@/types/doctor";
 import styles from "./BookingModal.module.scss";
 import Button from "@/components/Shared/Button";
+import { Appointment } from "@/types/appointment";
 
 interface BookingModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   doctorData: Doctor;
+  onBook: (appointment: Appointment) => void;
 }
 
 const BookingModal: FC<BookingModalProps> = ({
   isOpen,
   setIsOpen,
   doctorData,
+  onBook,
 }) => {
   const { name, imageSrc, location, availability, specialty, rating } =
     doctorData;
@@ -31,6 +34,15 @@ const BookingModal: FC<BookingModalProps> = ({
   const clearData = () => {
     setSelectedDay(null);
     setSelectedTime(null);
+  };
+
+  const onBookAppointment = () => {
+    if (selectedDay && selectedTime) {
+      console.log("booked");
+      onBook({ id: doctorData?.id, selectedDay, selectedTime });
+      clearData();
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -99,7 +111,7 @@ const BookingModal: FC<BookingModalProps> = ({
           </div>
         </div>
         <div className={styles["actions"]}>
-          <Button type="submit" onClick={() => setIsOpen(false)}>
+          <Button type="submit" onClick={() => onBookAppointment()}>
             Book
           </Button>
         </div>

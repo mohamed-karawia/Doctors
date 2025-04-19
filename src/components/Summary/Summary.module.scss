@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 16px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.appointment--card {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid $gray;
+  padding: 10px 0;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__name {
+    font-size: $font-lg;
+    font-weight: bold;
+  }
+  &__specialty {
+    font-size: $font-md;
+    color: $gray;
+  }
+
+  &__date {
+    font-size: $font-md;
+    color: $green;
+  }
+
+  width: 100%;
+}
