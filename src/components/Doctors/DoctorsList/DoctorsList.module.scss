@@ -1,6 +1,7 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   gap: 16px;
   padding: 16px;
   background-color: #f9f9f9;
@@ -10,4 +11,12 @@
   border: 1px solid #e0e0e0;
   max-width: 1200px;
   width: 100%;
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

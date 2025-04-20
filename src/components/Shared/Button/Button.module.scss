@@ -18,4 +18,11 @@
     background-color: dark-blue;
     transform: scale(1);
   }
+
+  &:disabled {
+    background-color: $light-gray;
+    color: $gray;
+    cursor: not-allowed;
+    transform: none;
+  }
 }

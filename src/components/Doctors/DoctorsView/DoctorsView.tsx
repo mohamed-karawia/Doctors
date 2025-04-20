@@ -1,6 +1,6 @@
+import { FC, useEffect, useMemo, useState } from "react";
 import Dropdown, { OptionType } from "@/components/Shared/Dropdown";
 import styles from "./DoctorsView.module.scss";
-import { FC, useEffect, useMemo, useState } from "react";
 import { DOCTORS } from "@/constants/DOCTORS";
 import stringsToOptions from "@/utils/stringsToOptions";
 import { SPECIALTIES, WEEK_DAYS } from "@/constants/FILTERS";

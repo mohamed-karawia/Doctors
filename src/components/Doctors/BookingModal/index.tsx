@@ -111,7 +111,11 @@ const BookingModal: FC<BookingModalProps> = ({
           </div>
         </div>
         <div className={styles["actions"]}>
-          <Button type="submit" onClick={() => onBookAppointment()}>
+          <Button
+            type="submit"
+            onClick={() => onBookAppointment()}
+            disabled={!selectedDay || !selectedTime}
+          >
             Book
           </Button>
         </div>
