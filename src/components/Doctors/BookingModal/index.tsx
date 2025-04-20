@@ -148,7 +148,7 @@ const BookingModal: FC<BookingModalProps> = ({
             onClick={() => onBookAppointment()}
             disabled={!selectedDay || !selectedTime}
           >
-            Book
+            Confirm
           </Button>
         </div>
       </div>
