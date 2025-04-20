@@ -10,6 +10,13 @@ type SummaryProps = {
 };
 
 const Summary: FC<SummaryProps> = ({ bookedAppointments }) => {
+  if (bookedAppointments.length < 1) {
+    return (
+      <div className={styles["container"]}>
+        <h3>You don&apos;t have any booked appointments yet</h3>
+      </div>
+    );
+  }
   return (
     <div className={styles["container"]}>
       {bookedAppointments.map((appointment) => {
