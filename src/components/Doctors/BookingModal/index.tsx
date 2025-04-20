@@ -4,6 +4,7 @@ import ModalComponent from "@/components/Shared/Modal";
 import { Doctor } from "@/types/doctor";
 import styles from "./BookingModal.module.scss";
 import Button from "@/components/Shared/Button";
+import Rating from "@/components/Shared/Rating";
 import { Appointment } from "@/types/appointment";
 
 interface BookingModalProps {
@@ -45,6 +46,46 @@ const BookingModal: FC<BookingModalProps> = ({
     }
   };
 
+  const renderAvailableDays = () => {
+    const availableDays = Object.keys(availability);
+    return (
+      <ul>
+        {availableDays.map((day) => (
+          <li
+            key={day}
+            className={selectedDay === day ? styles.selected : ""}
+            onClick={() => handleDayClick(day)}
+          >
+            {day.charAt(0).toUpperCase() + day.slice(1)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const renderAvailableTimeSlots = () => (
+    <div className={styles["data--booking__times"]}>
+      <>
+        <h4>Available Times for {selectedDay}</h4>
+        <ul>
+          {availableTimes.length > 0 ? (
+            availableTimes?.map((time, index) => (
+              <li
+                key={index}
+                className={selectedTime === time ? styles["selected"] : ""}
+                onClick={() => setSelectedTime(time)}
+              >
+                {time}
+              </li>
+            ))
+          ) : (
+            <p>No times available</p>
+          )}
+        </ul>
+      </>
+    </div>
+  );
+
   return (
     <ModalComponent
       isOpen={isOpen}
@@ -65,48 +106,15 @@ const BookingModal: FC<BookingModalProps> = ({
             <h3 className={styles["data--name"]}>{name}</h3>
             <p className={styles["data--specialty"]}>{specialty}</p>
             <p className={styles["data--location"]}>{location}</p>
-            <p className={styles["data--rating"]}>Rating: {rating}</p>
+            <p className={styles["data--rating"]}>
+              Rating: <Rating value={rating} />
+            </p>
             <div className={styles["data--booking"]}>
               <div className={styles["data--booking__days"]}>
                 <h4>Available Weekdays</h4>
-                <ul>
-                  {Object.keys(availability).map((day) => (
-                    <li
-                      key={day}
-                      className={selectedDay === day ? styles.selected : ""}
-                      onClick={() => handleDayClick(day)}
-                    >
-                      {day.charAt(0).toUpperCase() + day.slice(1)}
-                    </li>
-                  ))}
-                </ul>
+                {renderAvailableDays()}
               </div>
-              <div className={styles["data--booking__times"]}>
-                {selectedDay && (
-                  <>
-                    <h4>Available Times for {selectedDay}</h4>
-                    <ul>
-                      {availableTimes.length > 0 ? (
-                        availableTimes?.map((time, index) => (
-                          <li
-                            key={index}
-                            className={
-                              selectedTime === time
-                                ? styles["selected"]
-                                : styles["time-slot"]
-                            }
-                            onClick={() => setSelectedTime(time)}
-                          >
-                            {time}
-                          </li>
-                        ))
-                      ) : (
-                        <p>No times available</p>
-                      )}
-                    </ul>
-                  </>
-                )}
-              </div>
+              {selectedDay && renderAvailableTimeSlots()}
             </div>
           </div>
         </div>

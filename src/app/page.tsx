@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import styles from "./page.module.scss";
 import DoctorsView from "@/components/Doctors/DoctorsView/DoctorsView";
-import Summary from "@/components/Summary";
 import { Appointment } from "@/types/appointment";
+
+const Summary = dynamic(() => import("@/components/Summary"), {
+  loading: () => <p>Loading...</p>,
+});
 
 const TABS = ["doctors", "appointments summary"];
 

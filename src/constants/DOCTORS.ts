@@ -12,7 +12,7 @@ export const DOCTORS: Doctor[] = [
       Friday: ["9:00 AM", "2:00 PM", "5:00 PM"],
     },
     specialty: "Cardiology",
-    rating: 4.5,
+    rating: 4,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const DOCTORS: Doctor[] = [
       Friday: ["9:00 AM", "12:00 PM", "2:00 PM"],
     },
     specialty: "Cardiology",
-    rating: 4.7,
+    rating: 5,
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ export const DOCTORS: Doctor[] = [
       Thursday: ["11:00 AM", "2:00 PM", "5:00 PM"],
     },
     specialty: "Orthopedics",
-    rating: 4.8,
+    rating: 2,
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ export const DOCTORS: Doctor[] = [
       Thursday: ["11:00 AM", "2:00 PM", "5:00 PM"],
     },
     specialty: "Orthopedics",
-    rating: 4.6,
+    rating: 3,
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ export const DOCTORS: Doctor[] = [
       Friday: ["9:00 AM", "12:00 PM", "3:00 PM"],
     },
     specialty: "Internal Medicine",
-    rating: 4.4,
+    rating: 5,
   },
   {
     id: 6,
@@ -77,7 +77,7 @@ export const DOCTORS: Doctor[] = [
       Friday: ["10:00 AM", "1:00 PM", "4:00 PM"],
     },
     specialty: "Internal Medicine",
-    rating: 4.9,
+    rating: 3,
   },
   {
     id: 7,
@@ -90,7 +90,7 @@ export const DOCTORS: Doctor[] = [
       Thursday: ["11:00 AM", "2:00 PM", "5:00 PM"],
     },
     specialty: "Dentistry",
-    rating: 4.3,
+    rating: 4,
   },
   {
     id: 8,
@@ -103,6 +103,6 @@ export const DOCTORS: Doctor[] = [
       Friday: ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"],
     },
     specialty: "Dentistry",
-    rating: 4.7,
+    rating: 5,
   },
 ];

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Doctor } from "@/types/doctor";
 import Button from "@/components/Shared/Button";
 import styles from "./DoctorCard.module.scss";
+import Rating from "@/components/Shared/Rating";
 
 type DoctorCardProps = {
   doctor: Doctor;
@@ -28,7 +29,9 @@ const DoctorCard: FC<DoctorCardProps> = ({ doctor, onBook }) => {
         <h3 className={styles["card--name"]}>{name}</h3>
         <p className={styles["card--specialty"]}>{specialty}</p>
         <p className={styles["card--location"]}>{location}</p>
-        <p className={styles["card--rating"]}>Rating: {rating}</p>
+        <p className={styles["card--rating"]}>
+          Rating: <Rating value={rating} />
+        </p>
         <p className={styles["card--availability"]}>
           Available: {availabilityDays}
         </p>

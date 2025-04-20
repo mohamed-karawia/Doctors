@@ -5,9 +5,9 @@ import { DOCTORS } from "@/constants/DOCTORS";
 import stringsToOptions from "@/utils/stringsToOptions";
 import { SPECIALTIES, WEEK_DAYS } from "@/constants/FILTERS";
 import { Doctor } from "@/types/doctor";
+import { Appointment } from "@/types/appointment";
 import DoctorsList from "../DoctorsList";
 import BookingModal from "../BookingModal";
-import { Appointment } from "@/types/appointment";
 
 type DoctorsViewProps = {
   handleBookAppointment: (appointment: Appointment) => void;
