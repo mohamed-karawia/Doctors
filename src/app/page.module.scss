@@ -12,28 +12,28 @@
   align-items: center;
   margin-bottom: 20px;
   padding: 10px 0;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid $gray;
 }
 
 .tab {
-  font-size: 16px;
+  font-size: $font-md;
   font-weight: bold;
   padding: 10px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: capitalize;
-  color: #333;
+  color: $dark-gray;
   border-radius: 8px;
   text-align: center;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: $lightest-blue;
   }
 
   &.active {
-    background-color: #007bff;
-    color: white;
+    background-color: $blue;
+    color: $white;
     border-radius: 8px 8px 0 0;
-    border: 2px solid #007bff;
+    border: 2px solid $blue;
   }
 }

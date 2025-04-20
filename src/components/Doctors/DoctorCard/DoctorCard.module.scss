@@ -4,7 +4,7 @@
   align-items: center;
   width: 300px;
 
-  background-color: #fff;
+  background-color: $white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -21,20 +21,22 @@
     font-weight: bold;
     margin-bottom: 8px;
   }
+
   &--specialty {
     font-size: $font-md;
-    color: #666;
+    color: $dark-gray;
     margin-bottom: 8px;
   }
 
   &--location {
     font-size: $font-md;
-    color: #999;
+    color: $gray;
     margin-bottom: 8px;
   }
+
   &--rating {
     font-size: $font-md;
-    color: #f39c12;
+    color: $yellow;
     margin-bottom: 8px;
   }
 
