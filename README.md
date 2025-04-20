@@ -70,6 +70,15 @@ ChatGPT also helped make the app more accessible by:
 
 - At the moment, doctors have fixed days for appointments, but in reality, their availability may vary. We’ll need to switch to a **date picker** for booking appointments, so users can select a specific date and time for their visit.
 
+### 5. **Confirm Booking Feedback**
+
+- **Success Feedback**: After a user successfully books an appointment, the system should show a confirmation message, such as:
+  - "Your booking has been submitted successfully! You will receive a confirmation email shortly."
+- **Error Handling**: If there is an issue with the booking (e.g., network errors, unavailable slots), an error message should be displayed:
+  - "Oops! Something went wrong. Please try again later."
+
+These messages ensure that the user receives clear and immediate feedback regarding their booking action. Handling success and error scenarios will improve the user experience and help guide the user through the process more effectively.
+
 ---
 
 ## Future Improvements
