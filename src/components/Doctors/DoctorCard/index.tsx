@@ -17,27 +17,42 @@ const DoctorCard: FC<DoctorCardProps> = ({ doctor, onBook }) => {
   const availabilityDays = Object.keys(availability).join(", ");
 
   return (
-    <div className={styles["card"]}>
+    <div
+      className={styles["card"]}
+      role="region"
+      aria-labelledby={`doctor-${id}`}
+    >
       <Image
         src={imageSrc}
-        alt={`${name}'s profile picture`}
+        alt={`Profile picture of Dr. ${name}`}
         width={100}
         height={100}
         className={styles["card--image"]}
+        aria-hidden="true"
       />
       <div className={styles["card--info"]}>
-        <h3 className={styles["card--name"]}>{name}</h3>
-        <p className={styles["card--specialty"]}>{specialty}</p>
-        <p className={styles["card--location"]}>{location}</p>
-        <p className={styles["card--rating"]}>
+        <h3 className={styles["card--name"]} id={`doctor-${id}`}>
+          {name}
+        </h3>
+        <p className={styles["card--specialty"]} aria-label="Specialty">
+          {specialty}
+        </p>
+        <p className={styles["card--location"]} aria-label="Location">
+          {location}
+        </p>
+        <p className={styles["card--rating"]} aria-label={`Rating: ${rating}`}>
           Rating: <Rating value={rating} />
         </p>
-        <p className={styles["card--availability"]}>
+        <p className={styles["card--availability"]} aria-label="Availability">
           Available: {availabilityDays}
         </p>
       </div>
       <div className={styles["card--actions"]}>
-        <Button type="button" onClick={() => onBook(id)}>
+        <Button
+          type="button"
+          onClick={() => onBook(id)}
+          aria-label={`Book an appointment with Dr. ${name}`}
+        >
           Book Now
         </Button>
       </div>

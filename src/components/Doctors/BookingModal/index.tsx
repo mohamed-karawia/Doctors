@@ -32,6 +32,22 @@ const BookingModal: FC<BookingModalProps> = ({
     setAvailableTimes(availability[day] || []);
   };
 
+  const handleDayKeyDown = (event: React.KeyboardEvent, day: string) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleDayClick(day);
+    }
+  };
+
+  const handleTimeClick = (time: string) => {
+    setSelectedTime(time);
+  };
+
+  const handleTimeKeyDown = (event: React.KeyboardEvent, time: string) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleTimeClick(time);
+    }
+  };
+
   const clearData = () => {
     setSelectedDay(null);
     setSelectedTime(null);
@@ -53,8 +69,12 @@ const BookingModal: FC<BookingModalProps> = ({
         {availableDays.map((day) => (
           <li
             key={day}
-            className={selectedDay === day ? styles.selected : ""}
+            tabIndex={0}
             onClick={() => handleDayClick(day)}
+            onKeyDown={(e) => handleDayKeyDown(e, day)}
+            role="button"
+            aria-pressed={selectedDay === day}
+            className={selectedDay === day ? styles.selected : ""}
           >
             {day.charAt(0).toUpperCase() + day.slice(1)}
           </li>
@@ -72,8 +92,12 @@ const BookingModal: FC<BookingModalProps> = ({
             availableTimes?.map((time, index) => (
               <li
                 key={index}
-                className={selectedTime === time ? styles["selected"] : ""}
-                onClick={() => setSelectedTime(time)}
+                tabIndex={0}
+                onClick={() => handleTimeClick(time)}
+                onKeyDown={(e) => handleTimeKeyDown(e, time)}
+                role="button"
+                aria-pressed={selectedTime === time}
+                className={selectedTime === time ? styles.selected : ""}
               >
                 {time}
               </li>

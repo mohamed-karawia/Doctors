@@ -19,12 +19,26 @@ export default function Home() {
   );
 
   const onBookAppointment = (appointment: Appointment) => {
-    console.log(appointment);
     setBookedAppointments((prev) => [...prev, appointment]);
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent, tab: string) => {
+    if (event.key === "Enter" || event.key === " ") {
+      setActiveTab(tab);
+    } else if (event.key === "ArrowRight") {
+      const currentIndex = TABS.indexOf(activeTab);
+      const nextIndex = (currentIndex + 1) % TABS.length;
+      setActiveTab(TABS[nextIndex]);
+    } else if (event.key === "ArrowLeft") {
+      const currentIndex = TABS.indexOf(activeTab);
+      const prevIndex = (currentIndex - 1 + TABS.length) % TABS.length;
+      setActiveTab(TABS[prevIndex]);
+    }
+  };
+
   return (
     <div className={styles["container"]}>
-      <div className={styles["tabs"]}>
+      <div className={styles["tabs"]} role="tablist">
         {TABS.map((tab) => (
           <div
             key={tab}
@@ -32,6 +46,11 @@ export default function Home() {
               activeTab === tab ? styles.active : ""
             }`}
             onClick={() => setActiveTab(tab)}
+            onKeyDown={(e) => handleKeyDown(e, tab)}
+            tabIndex={0}
+            role="tab"
+            aria-selected={activeTab === tab}
+            aria-controls={`panel-${tab}`}
           >
             {tab}
           </div>

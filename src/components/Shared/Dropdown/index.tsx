@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Select, {
   components,
   StylesConfig,
@@ -24,6 +24,7 @@ interface DropdownProps {
   value: PropsValue<OptionType>;
   isLoading?: boolean;
   placeholder: string;
+  ariaLabel?: string;
 }
 
 const selectStyles: StylesConfig<OptionType, false> = {
@@ -72,26 +73,35 @@ const Dropdown: FC<DropdownProps> = ({
   handleChange,
   value,
   placeholder,
+  ariaLabel,
   ...props
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Work around to solve package issue with nextjs according to the issue: https://github.com/JedWatson/react-select/issues/5459#issuecomment-1458451734
+  useEffect(() => setIsMounted(true), []);
+
   return (
-    <div>
-      <Select<OptionType>
-        className={styles["select"]}
-        value={value}
-        options={options}
-        onChange={handleChange}
-        components={{
-          Option,
-          SingleValue,
-          IndicatorSeparator: () => null,
-        }}
-        styles={selectStyles}
-        isClearable
-        placeholder={placeholder}
-        {...props}
-      />
-    </div>
+    isMounted && (
+      <div>
+        <Select<OptionType>
+          className={styles["select"]}
+          value={value}
+          options={options}
+          onChange={handleChange}
+          components={{
+            Option,
+            SingleValue,
+            IndicatorSeparator: () => null,
+          }}
+          styles={selectStyles}
+          isClearable
+          placeholder={placeholder}
+          aria-label={ariaLabel}
+          {...props}
+        />
+      </div>
+    )
   );
 };
 

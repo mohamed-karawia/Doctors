@@ -34,6 +34,12 @@ const ModalComponent: FC<ModalProps> = ({
     setIsOpen(false);
   };
 
+  const handleCloseKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      closeModal();
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -41,6 +47,10 @@ const ModalComponent: FC<ModalProps> = ({
       style={customStyles}
       ariaHideApp={false}
       onAfterClose={onAfterClose}
+      aria={{
+        labelledby: title,
+      }}
+      contentLabel={title}
     >
       <div className={styles["heading"]}>
         <h3 className={styles["title"]} aria-label={title}>
@@ -49,7 +59,10 @@ const ModalComponent: FC<ModalProps> = ({
         <span
           className={styles["icon"]}
           onClick={closeModal}
+          onKeyDown={handleCloseKeyDown}
+          tabIndex={0}
           aria-label="Close popup"
+          role="button"
         >
           &#x2715;
         </span>

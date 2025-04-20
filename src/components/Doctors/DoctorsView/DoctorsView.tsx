@@ -60,18 +60,20 @@ const DoctorsView: FC<DoctorsViewProps> = ({ handleBookAppointment }) => {
   return (
     <div className={styles["container"]}>
       <div className={styles["filters"]}>
-        <h3>Filter by</h3>
+        <h3 aria-label="Filter by">Filter by</h3>
         <Dropdown
           options={specialtiesOptions}
           value={specialty}
           handleChange={(val) => setSpecialty(val)}
           placeholder="Specialty"
+          ariaLabel="Specialty"
         />
         <Dropdown
           options={weekDaysOptions}
           value={weekDay}
           handleChange={(val) => setWeekDay(val)}
           placeholder="Availability"
+          ariaLabel="Availability"
         />
       </div>
       <DoctorsList doctorsList={filteredDoctors} onBook={openBookingModal} />
