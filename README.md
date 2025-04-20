@@ -48,6 +48,10 @@ ChatGPT also helped make the app more accessible by:
 - Adding **ARIA labels** and **roles** for screen readers.
 - Ensuring users can navigate and interact with elements using the **keyboard** (i.e., for buttons, tabs, etc.).
 
+### 3. **Structuring Readme File**
+
+Finally i used ChatGPT to help me structring the Readme.md file :)
+
 ---
 
 ## Limitations & Next Steps
